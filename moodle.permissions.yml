@@ -1,0 +1,14 @@
+access moodle connection settings:
+  description: 'Configure moodle database and URL settings.'
+  title: 'Administer moodle connection settings'
+  restrict access:
+
+access moodle course settings:
+  description: 'Configure moodle course settings.'
+  title: 'Administer moodle course settings'
+  restrict access: TRUE
+
+view moodle course list:
+  description: 'Allow users to view moodle course list.'
+  title: 'View moodle course list'
+  restrict access: TRUE

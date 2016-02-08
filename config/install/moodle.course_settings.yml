@@ -1,0 +1,3 @@
+# Default values for moodle.course_settings.
+
+window_target: '_self'

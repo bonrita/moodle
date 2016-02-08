@@ -1,0 +1,22 @@
+services:
+  moodle.connector:
+    class: Drupal\moodle\Connector
+    arguments: ['@config.factory', '@logger.factory']
+
+  moodle.current_user:
+    class: Drupal\moodle\Sql\CurrentUser
+    arguments: ['@config.factory', '@logger.factory', '@current_user', '@cache.data']
+
+  moodle.user_courses:
+    class: Drupal\moodle\Sql\Courses
+    arguments: ['@config.factory', '@logger.factory', '@moodle.current_user', '@cache.data']
+
+#  logger.channel.file:
+#    class: Drupal\Core\Logger\LoggerChannel
+#    factory: logger.factory:get
+#    arguments: ['file']
+
+#  moodle.connector.config:
+#    parent: config.factory
+#    factory: config.factory:get
+#    arguments: ['moodle.connector_settings']

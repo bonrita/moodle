@@ -1,0 +1,23 @@
+moodle.settings:
+  path: '/admin/config/moodle'
+  defaults:
+    _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
+    _title: 'Moodle'
+  requirements:
+    _permission: 'access administration pages'
+
+moodle.connection_settings:
+  path: '/admin/config/moodle/connection-settings'
+  defaults:
+    _form: '\Drupal\moodle\Form\ConnectorSettingsForm'
+    _title: 'Connection settings'
+  requirements:
+    _permission: 'access moodle connection settings'
+
+moodle.course_settings:
+  path: '/admin/config/moodle/course-settings'
+  defaults:
+    _form: '\Drupal\moodle\Form\CourseSettingsForm'
+    _title: 'Course settings'
+  requirements:
+    _permission: 'access moodle course settings'

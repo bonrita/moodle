@@ -1,0 +1,6 @@
+name: Moodle
+type: module
+description: Functionality to retrieve data from moodle.
+core: 8.x
+package: Moodle
+configure: moodle.connection_settings

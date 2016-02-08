@@ -1,0 +1,30 @@
+# Schema for the configuration files of the moodle.connector_settings.
+
+moodle.connector_settings:
+  type: config_object
+  label: 'Connector settings'
+  mapping:
+    db_type:
+      type: string
+      label: 'The database type.'
+    db_server:
+      type: string
+      label: 'The database server.'
+    port:
+      type: integer
+      label: 'The database TCP port.'
+    database:
+      type: string
+      label: 'The database name.'
+    db_prefix:
+      type: string
+      label: 'The database prefix.'
+    password:
+      type: string
+      label: 'The database password.'
+    username:
+      type: string
+      label: 'The username of the github user'
+    url:
+      type: string
+      label: 'The moodle url'

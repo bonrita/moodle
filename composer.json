@@ -1,0 +1,6 @@
+{
+  "name": "drupal/moodle",
+  "description": "Provides functionality to retrieve data from moodle.",
+  "type": "drupal-module",
+  "license": "GPL-2.0+",
+}

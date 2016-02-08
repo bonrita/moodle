@@ -1,0 +1,18 @@
+moodle.settings:
+  title: 'Moodle'
+  parent: system.admin_config
+  route_name: moodle.settings
+
+moodle.connection_settings:
+  title: 'Connector settings'
+  description: 'Moodle connector settings.'
+  parent: moodle.settings
+  route_name: moodle.connection_settings
+  weight: -100
+
+moodle.course_settings:
+  title: 'Course settings'
+  description: 'Moodle course settings.'
+  parent: moodle.settings
+  route_name: moodle.course_settings
+  weight: -99
