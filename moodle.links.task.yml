@@ -1,9 +1,14 @@
 moodle.connection_settings:
   route_name: moodle.connection_settings
-  title: 'Connector settings.'
+  title: 'Connector settings'
   base_route: moodle.connection_settings
 
 moodle.course_settings:
   route_name: moodle.course_settings
-  title: 'Course settings.'
+  title: 'Course settings'
   base_route: moodle.connection_settings
+
+moodle.user_mapping:
+  route_name: moodle.user_mapping
+  base_route: entity.user.canonical
+  title: 'Moodle'

@@ -21,3 +21,22 @@ moodle.course_settings:
     _title: 'Course settings'
   requirements:
     _permission: 'access moodle course settings'
+
+entity.moodle_course.collection:
+  path: '/admin/courses'
+  defaults:
+    _entity_list: 'moodle_course'
+    _title: 'Moodle courses'
+  requirements:
+    _permission: 'administer users'
+
+moodle.user_mapping:
+  path: '/user/{user}/moodle'
+  defaults:
+    _form: 'Drupal\moodle\Form\UserMapping'
+    _title: 'Moodle'
+  requirements:
+    _permission: 'administer users'
+  options:
+    _admin_route: TRUE
+    user: \d+

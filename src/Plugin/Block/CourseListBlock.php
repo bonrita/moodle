@@ -4,6 +4,10 @@
  * User: bona
  * Date: 02/02/16
  * Time: 22:37
+ *
+ * This functionality has been suspended for further development.
+ * This is because i have now intergrated views and one can use views to
+ * create a block display.
  */
 
 namespace Drupal\moodle\Plugin\Block;
@@ -56,15 +60,8 @@ class CourseListBlock extends BlockBase implements ContainerFactoryPluginInterfa
   /**
    * @inheritDoc
    */
-//  public function __construct(array $configuration, $plugin_id, $plugin_definition, LoggerChannelFactoryInterface $login_factory, ConfigFactoryInterface $config_factory, AccountInterface $current_user) {
-  // , Connector $connector, AccountInterface $current_user
   public function __construct(array $configuration, $plugin_id, $plugin_definition, Courses $courses) {
-parent::__construct($configuration, $plugin_id, $plugin_definition);
-//    $this->loggerFactory = $login_factory;
-//    $this->config = $config_factory;
-//    $this->currentUser = $current_user;
-//    $this->connector = $connector->connect();
-//    $this->moodleCurrentUser = $moodle_current_user;
+    parent::__construct($configuration, $plugin_id, $plugin_definition);
     $this->courses = $courses;
   }
 
@@ -76,11 +73,6 @@ parent::__construct($configuration, $plugin_id, $plugin_definition);
       $configuration,
       $plugin_id,
       $plugin_definition,
-//      $container->get('moodle.connector'),
-//      $container->get('logger.factory'),
-//      $container->get('config.factory'),
-//      $container->get('current_user')
-//      $container->get('moodle.current_user')
       $container->get('moodle.user_courses')
     );
   }
@@ -89,39 +81,8 @@ parent::__construct($configuration, $plugin_id, $plugin_definition);
    * @inheritDoc
    */
   public function build() {
-//dsm(get_class_methods($this->connect()));
-//dsm(get_class_methods($this->currentUser));
-//    dsm($this->currentUser->getAccountName());
-//    dsm(get_class($this->connect()));
-    // Get Moodle user id.
-//    $moodle_user_id = $this->connect()->query("SELECT id FROM {user} WHERE username = :username", array(
-//      ':username' => $this->currentUser->getAccountName(),
-//    ))->fetchField();
-//
-//    dsm($moodle_user_id);
-
-//    $query = $this->connector->select('user', 'u', array('fetch' => \PDO::FETCH_ASSOC));
-//    $query->addField('u', 'id');
-//    $moodle_user_id =  $query->condition('u.username', $this->currentUser->getAccountName())
-//      ->execute()->fetchField();
-//
-//    dsm($moodle_user_id);
-//    dsm($this->moodleCurrentUser->id());
-//dsm($this->moodleCurrentUser->user()->id);
-
-    $this->courses->query();
-
-    $query = "SELECT {course}.id, {course}.fullname
-            FROM {course}
-              INNER JOIN {context} ON {course}.id = {context}.instanceid
-                AND {context}.contextlevel = :contextlevel
-              INNER JOIN {role_assignments} ON {context}.id = {role_assignments}.contextid
-              INNER JOIN {role} ON {role_assignments}.roleid = {role}.id
-              INNER JOIN {user} ON {role_assignments}.userid = {user}.id
-            WHERE {user}.id = :userid";
-
     return array(
-      '#markup' => 'bona moodle course coming @todo',
+      '#markup' => '@todo: Moodle courses coming.',
 
     );
   }

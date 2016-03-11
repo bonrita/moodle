@@ -20,3 +20,12 @@ services:
 #    parent: config.factory
 #    factory: config.factory:get
 #    arguments: ['moodle.connector_settings']
+
+#  database.moodle:
+#    class: Drupal\Core\Database\Connection
+#    factory: Drupal\Core\Database\Database::getConnection
+#    arguments: [moodle]
+
+  entity.query.moodle:
+    class: Drupal\moodle\Query\QueryFactory
+    arguments: ['@moodle.connector']
