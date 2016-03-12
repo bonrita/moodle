@@ -1,5 +1,4 @@
- #Moodle
-
+Moodle
 
 A drupal 8 module that displays various data from moodle into drupal e.g users, courses etc....
 It intergrates the moodle database to Drupal 8 views core module.
@@ -49,7 +48,7 @@ Select the moodle user from the drop down that you want to map to the user in qu
 Navigate to 'admin/structure/views' add a new view.
 From  'View settings' select 'Moodle course'
 
-You may add arguments e.g select courses of an inlogged user or any other user.
+You may add arguments e.g select courses of an in logged user or any other user.
 You may filter on categories of courses.
 Just dive in and make your fingers wet. You will find many Goodies.
 
