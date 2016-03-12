@@ -15,7 +15,7 @@ use Drupal\Core\Logger\LoggerChannelFactoryInterface;
 use Drupal\moodle\Form\ConnectorSettingsForm;
 
 abstract class Base {
-// see : /Users/bona/php_projects/drupal8/core/modules/migrate/src/Plugin/migrate/source/SqlBase.php
+// see : drupal8/core/modules/migrate/src/Plugin/migrate/source/SqlBase.php
 // Drupal\migrate\Plugin\migrate\source\SqlBase
 
   /**

@@ -15,6 +15,12 @@ use Drupal\Core\Logger\LoggerChannelFactoryInterface;
 use Drupal\moodle\Sql\Model\Course;
 use Drupal\moodle\Sql\Model\User;
 
+/**
+ * Class Courses
+ *   This class retrieves courses from the moodle database.
+ *
+ * @package Drupal\moodle\Sql
+ */
 class Courses extends Base {
 
   /**
@@ -55,24 +61,22 @@ class Courses extends Base {
   }
 
   /**
+   * Get course objects.
+   *
    * @return array
+   *   A list of course objects.
    */
   public function getCourses() {
     $this->query();
     $this->query->fields('cos');
 
     $statement = $this->query->execute();
-
-//    $course = new Course();
     $statement->setFetchMode(\PDO::FETCH_INTO, new Course());
-//    $statement->fetchAll();
-//    dsm($statement->fetchAllAssoc('id', \PDO::FETCH_INTO,new Course() ));
 
     foreach ($statement as $object) {
       $this->courses[$object->id] = clone $object;
     }
-    dsm($this->courses);
-    dsm($this->courses[2]->id);
+
     return $this->courses;
   }
 

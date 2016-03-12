@@ -18,7 +18,6 @@ use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Logger\LoggerChannelFactoryInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Session\AccountInterface;
-//use Drupal\moodle\Traits\Connector;
 use Drupal\moodle\Connector;
 use Drupal\moodle\Sql\Courses;
 use Drupal\moodle\Sql\CurrentUser;
@@ -34,7 +33,6 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  * )
  */
 class CourseListBlock extends BlockBase implements ContainerFactoryPluginInterface {
-//  use Connector;
 
   /**
    * The Current User object.
@@ -48,6 +46,9 @@ class CourseListBlock extends BlockBase implements ContainerFactoryPluginInterfa
    */
   protected $moodleCurrentUser;
 
+  /**
+   * @var \Drupal\moodle\Sql\Courses
+   */
   protected $courses;
 
   /**
@@ -82,7 +83,7 @@ class CourseListBlock extends BlockBase implements ContainerFactoryPluginInterfa
    */
   public function build() {
     return array(
-      '#markup' => '@todo: Moodle courses coming.',
+      '#markup' => '@todo: Moodle courses coming soon.',
 
     );
   }

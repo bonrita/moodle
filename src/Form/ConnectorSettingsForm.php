@@ -13,6 +13,19 @@ use Drupal\Core\Database\Database;
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
 
+/**
+ * Class ConnectorSettingsForm
+ *   This class generates a form that administrators will use to add moodle
+ *   specific setttings e.g the moodle url
+ *
+ *   NB:
+ *   In future some settings maybe completely removed e.g the database settings
+ *   in favour of adding them directly to the settings.php file.
+ *   This is because we are using views for all the rendering and views expects
+ *   that the external database settings should be in the settings.php
+ *
+ * @package Drupal\moodle\Form
+ */
 class ConnectorSettingsForm extends ConfigFormBase {
 
   /**

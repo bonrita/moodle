@@ -1,2 +1,3 @@
 # moodle
 A drupal 8 module that displays various data from moodle in drupal e.g users, courses etc....
+It intergrates the moodle database to Drupal 8 views core module.

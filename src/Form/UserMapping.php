@@ -16,6 +16,14 @@ use Drupal\moodle\MoodleStorage;
 use Drupal\user\UserDataInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
+/**
+ * Class UserMapping
+ *   This class generates a form that is shown on the user's profile.
+ *   Administrators can use this form to map drupal users with a correspoding
+ *   moodle user.
+ *
+ * @package Drupal\moodle\Form
+ */
 class UserMapping extends FormBase {
 
   /**

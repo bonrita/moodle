@@ -12,6 +12,17 @@ namespace Drupal\moodle\Form;
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
 
+/**
+ * Class CourseSettingsForm
+ *   This class generates a form that is used by administrators to set up
+ *   configurations that will be used on courses.
+ *
+ *   NB:
+ *   Some functionality maybe ported in the near future from this form to
+ *   configurations in the views fields.
+ *
+ * @package Drupal\moodle\Form
+ */
 class CourseSettingsForm extends ConfigFormBase{
 
   /**
@@ -66,6 +77,5 @@ class CourseSettingsForm extends ConfigFormBase{
     $config->set('window_target', $form_state->getValue('window_target'));
     parent::submitForm($form, $form_state);
   }
-
 
 }
