@@ -15,6 +15,12 @@ use Drupal\Core\Logger\LoggerChannelFactoryInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\moodle\Form\ConnectorSettingsForm;
 
+/**
+ * Class Connector
+ *   The class to provide a moodle database connector.
+ *
+ * @package Drupal\moodle
+ */
 class Connector {
   use StringTranslationTrait;
 
@@ -54,12 +60,9 @@ class Connector {
     // Try and connect to the database
     if (NULL === self::$connection) {
       try {
-        // Add connection to the Moodle database.
-        $database_settings = $this->getDatabaseSettings();
-        Database::addConnectionInfo('moodle', 'default', $database_settings);
-
         // Connect to the database.
-        self::$connection = Database::getConnection('default', 'moodle');
+        $key = $this->getConnectorSettings()->get('database_connection_key');
+        self::$connection = Database::getConnection('default', $key);
 
         // Return the database object.
         return self::$connection;
@@ -73,27 +76,6 @@ class Connector {
     }
 
     return self::$connection;
-  }
-
-
-  /**
-   * Get database settings.
-   *
-   * @return array
-   *   A list of database settings.
-   */
-  protected function getDatabaseSettings() {
-    $settings = [
-      'driver'   => $this->getConnectorSettings()->get('db_type'),
-      'host'     => $this->getConnectorSettings()->get('db_server'),
-      'port'     => $this->getConnectorSettings()->get('port'),
-      'username' => $this->getConnectorSettings()->get('username'),
-      'password' => $this->getConnectorSettings()->get('password'),
-      'database' => $this->getConnectorSettings()->get('database'),
-      'prefix'   => $this->getConnectorSettings()->get('db_prefix'),
-    ];
-
-    return $settings;
   }
 
   /**

@@ -11,12 +11,12 @@ namespace Drupal\moodle;
 use Drupal\Core\Entity\ContentEntityBase;
 
 /**
- * Class MoodleEntityBase
+ * Class EntityBase
  *   Provides common functionalities common to moodle entities.
  *
  * @package Drupal\moodle
  */
-class MoodleEntityBase extends ContentEntityBase {
+ abstract class EntityBase extends ContentEntityBase {
 
   /**
    * @inheritDoc

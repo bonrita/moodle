@@ -11,7 +11,7 @@ namespace Drupal\moodle\Entity;
 
 use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\Core\Field\BaseFieldDefinition;
-use Drupal\moodle\MoodleEntityBase;
+use Drupal\moodle\EntityBase;
 
 /**
  * Defines the user entity class.
@@ -49,7 +49,7 @@ use Drupal\moodle\MoodleEntityBase;
  *   common_reference_target = TRUE
  * )
  */
-class Course extends MoodleEntityBase {
+class Course extends EntityBase {
 
   /**
    * @return mixed

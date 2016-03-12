@@ -54,60 +54,15 @@ class ConnectorSettingsForm extends ConfigFormBase {
     // Get form variable values.
     $config = $this->config(self::SETTINGS);
 
-    // Moodle Database Settings.
-    $form['db_type'] = array(
+   // Moodle Database Settings.
+
+    $form['database_connection_key'] = array(
       '#type'          => 'textfield',
-      '#title'         => $this->t('Database Type'),
-      '#default_value' => $config->get('db_type'),
-      '#description'   => $this->t("The type of the Moodle database. Common values for this field are 'mysql' or 'pgsql'."),
+      '#title'         => $this->t('The database connection key'),
+      '#default_value' => $config->get('database_connection_key'),
+      '#description'   => $this->t('The moodle database connection key. Defaults to Moodle which means the database key which was set in the settings.php for moodle database.'),
       '#size'          => 20,
       '#required'      => TRUE,
-    );
-    $form['db_server'] = array(
-      '#type'          => 'textfield',
-      '#title'         => $this->t('Database Server'),
-      '#default_value' => $config->get('db_server'),
-      '#description'   => t('The database host where Moodle is installed.'),
-      '#required'      => TRUE,
-    );
-    $form['port'] = array(
-      '#type'          => 'textfield',
-      '#title'         => $this->t('Database TCP Port'),
-      '#default_value' => $config->get('port'),
-      '#description'   => $this->t('The TCP port number of the database server. Default for MySQL is 3306.'),
-      '#size'          => 20,
-      '#required'      => TRUE,
-    );
-    $form['database'] = array(
-      '#type'          => 'textfield',
-      '#title'         => $this->t('Database Name'),
-      '#default_value' => $config->get('database'),
-      '#description'   => $this->t('The database name where Moodle is installed.'),
-      '#size'          => 20,
-      '#required'      => TRUE,
-    );
-    $form['db_prefix'] = array(
-      '#type'          => 'textfield',
-      '#title'         => $this->t('Database Prefix'),
-      '#default_value' => $config->get('db_prefix'),
-      '#description'   => $this->t("The prefix for the Moodle database tables. Default is 'mdl_'."),
-      '#size'          => 20,
-      '#required'      => FALSE,
-    );
-    $form['username'] = array(
-      '#type'          => 'textfield',
-      '#title'         => $this->t('Database User'),
-      '#default_value' => $config->get('username'),
-      '#description'   => $this->t('User to access to the Moodle database.'),
-      '#size'          => 20,
-      '#required'      => TRUE,
-    );
-    $form['password'] = array(
-      '#type'          => 'password',
-      '#title'         => $this->t('Database Password'),
-      '#default_value' => $config->get('password'),
-      '#description'   => $this->t('Password for the database user.'),
-      '#size'          => 20,
     );
 
     // Moodle URL.
@@ -129,14 +84,8 @@ class ConnectorSettingsForm extends ConfigFormBase {
     // Get form variable values.
     $config = $this->config(self::SETTINGS);
 
-    $config->set('db_type', $form_state->getValue('db_type'));
-    $config->set('db_server', $form_state->getValue('db_server'));
-    $config->set('port', $form_state->getValue('port'));
-    $config->set('database', $form_state->getValue('database'));
-    $config->set('db_prefix', $form_state->getValue('db_prefix'));
     $config->set('url', $form_state->getValue('url'));
-    $config->set('username', $form_state->getValue('username'));
-    $config->set('password', $form_state->getValue('password'));
+    $config->set('database_connection_key', $form_state->getValue('database_connection_key'));
 
     $config->save(TRUE);
 

@@ -21,6 +21,7 @@ use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\Core\Entity\Sql\SqlContentEntityStorage;
 use Drupal\Core\Field\FieldDefinitionInterface;
 use Drupal\Core\Language\LanguageManagerInterface;
+use Drupal\Core\Routing\RouteMatchInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -32,8 +33,19 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  */
 class MoodleStorage extends SqlContentEntityStorage {
 
-  public function __construct(EntityTypeInterface $entity_type, Connector $moodle_connector, EntityManagerInterface $entity_manager, CacheBackendInterface $cache, LanguageManagerInterface $language_manager) {
+  /**
+   * The route match.
+   *
+   * @var \Drupal\Core\Routing\RouteMatchInterface
+   */
+  protected $routeMatch;
+
+  /**
+   * {@inheritdoc}
+   */
+  public function __construct(EntityTypeInterface $entity_type, Connector $moodle_connector, EntityManagerInterface $entity_manager, CacheBackendInterface $cache, LanguageManagerInterface $language_manager, RouteMatchInterface $route_match) {
     $database = $moodle_connector->connect();
+    $this->routeMatch = $route_match;
     parent::__construct($entity_type, $database, $entity_manager, $cache, $language_manager);
   }
 
@@ -46,7 +58,8 @@ class MoodleStorage extends SqlContentEntityStorage {
       $container->get('moodle.connector'),
       $container->get('entity.manager'),
       $container->get('cache.entity'),
-      $container->get('language_manager')
+      $container->get('language_manager'),
+      $container->get('current_route_match')
     );
   }
 
@@ -124,6 +137,42 @@ class MoodleStorage extends SqlContentEntityStorage {
   public function countFieldData($storage_definition, $as_bool = FALSE) {
     // This is overiden because it is not applicable to
     // the moodle courses in the external database.
+  }
+
+  /**
+   * @inheritDoc
+   */
+  public function hasData() {
+    // Allow uninstalling of the module by informing drupal that there isn't any
+    // data for it to worry about.
+    $routes = array(
+      'system.modules_uninstall_confirm',
+      'system.modules_uninstall',
+    );
+
+    if (in_array($this->routeMatch->getRouteName(), $routes)) {
+      return FALSE;
+    }
+
+    // On all the other occasions let drupal know we have data.
+    return TRUE;
+  }
+
+  /**
+   * @inheritDoc
+   */
+  public function delete(array $entities) {
+    // Do nothing as drupal shouldn't delete data from the moodle database.
+    return;
+  }
+
+  /**
+   * @inheritDoc
+   */
+  public function onEntityTypeDelete(EntityTypeInterface $entity_type) {
+    // This is overiden because it is not applicable to
+    // the moodle external database.
+    // Drupal shouldn't delete the moodle tables when uninstalling the module.
   }
 
 }

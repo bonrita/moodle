@@ -5,7 +5,7 @@ It intergrates the moodle database to Drupal 8 views core module.
 
 ## Prerequisites
 
-  * Drupal 8
+  * Drupal 8 (Last tested against version 8.0.0-dev)
 
 ## Installation
 

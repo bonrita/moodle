@@ -1,7 +1,8 @@
 # Default values for moodle.connector_settings.
 
-db_type: 'mysql'
-db_server: 'localhost'
-port: 3306
-db_prefix: 'mdl_'
-password: ''
+database_connection_key: 'moodle'
+#db_type: 'mysql'
+#db_server: 'localhost'
+#port: 3306
+#db_prefix: 'mdl_'
+#password: ''
