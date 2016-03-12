@@ -59,7 +59,7 @@ Just dive in and make your fingers wet. You will find many Goodies.
 
 - Views field to embed the moodle view in a fieldable entity e.g node, user, paragraph etc....
 
-This functionality may later be removed or ignored if the view_field module (https://www.drupal.org/project/views_field) is ready for use
+This functionality may later be removed or ignored if the [viewfield module](https://www.drupal.org/project/views_field) is ready for use
 in drupal 8. At the moment it will be called the moodle_view_field but it may also be used to embed any other kind of view.
 
 - Add tests for all the functionality in the moodle module.
