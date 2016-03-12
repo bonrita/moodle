@@ -9,9 +9,9 @@
 namespace Drupal\moodle\Entity;
 
 
-use Drupal\Core\Entity\ContentEntityBase;
 use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\Core\Field\BaseFieldDefinition;
+use Drupal\moodle\MoodleEntityBase;
 
 /**
  * Defines the moodle_user entity class.
@@ -36,7 +36,7 @@ use Drupal\Core\Field\BaseFieldDefinition;
  *   common_reference_target = TRUE
  * )
  */
-class User extends ContentEntityBase {
+class User extends MoodleEntityBase {
 
   public function getName(){
     return $this->get('username')->value;
