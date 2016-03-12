@@ -11,21 +11,6 @@ services:
     class: Drupal\moodle\Sql\Courses
     arguments: ['@config.factory', '@logger.factory', '@moodle.current_user', '@cache.data']
 
-#  logger.channel.file:
-#    class: Drupal\Core\Logger\LoggerChannel
-#    factory: logger.factory:get
-#    arguments: ['file']
-
-#  moodle.connector.config:
-#    parent: config.factory
-#    factory: config.factory:get
-#    arguments: ['moodle.connector_settings']
-
-#  database.moodle:
-#    class: Drupal\Core\Database\Connection
-#    factory: Drupal\Core\Database\Database::getConnection
-#    arguments: [moodle]
-
   entity.query.moodle:
     class: Drupal\moodle\Query\QueryFactory
     arguments: ['@moodle.connector']
